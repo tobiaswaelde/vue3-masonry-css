@@ -1,6 +1,6 @@
 {
   "name": "vue3-masonry-css",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue Masonry component powered by CSS, dependancy free",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -23,7 +23,10 @@
     "component",
     "css"
   ],
-  "repository": "git@github.com:tobiaswaelde/vue3-masonry-css.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tobiaswaelde/vue3-masonry-css.git"
+  },
   "author": {
     "name": "Tobias Wälde",
     "email": "tobias.waelde@gmail.com",
