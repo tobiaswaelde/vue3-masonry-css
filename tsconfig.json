@@ -1,35 +1,19 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"target": "ES2015",
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
-		"skipDefaultLibCheck": true,
-		"sourceMap": true,
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strictNullChecks": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"noEmit": true,
-		"jsx": "preserve",
-		"forceConsistentCasingInFileNames": true,
-		"noUnusedLocals": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": false,
-		"noImplicitThis": true,
-		"noImplicitAny": false,
-		"importHelpers": false,
-		"resolveJsonModule": true,
-		"isolatedModules": false,
-		"paths": {
-			"vue3-masonry-css": ["src/index.ts"],
-			"vue3-masonry-css/*": ["./src/*"]
-		},
-		"types": ["./global", "@types/node"]
-	},
-	"include": ["**/*"],
-	"exclude": ["node_modules", "build", "dist", "__unconfig_vite.config.ts"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "lib": ["esnext", "dom"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"]
 }

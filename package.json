@@ -2,36 +2,15 @@
   "name": "vue3-masonry-css",
   "version": "0.0.1",
   "description": "Vue Masonry component powered by CSS, dependancy free",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/vue3-masonry.umd.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./*": [
-      "./*",
-      "./*.d.ts"
-    ]
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./*"
-      ]
-    }
-  },
   "files": [
-    "dist",
-    "global.d.ts",
-    "package.json",
-    "README.md"
+    "dist"
   ],
   "scripts": {
-    "build": "node ./build.js",
+    "build": "vite build",
     "preversion": "npm run build",
     "prepublishOnly": "npm run build",
     "publish-package": "git push && git push --tags && npm publish --registry=https://registry.npmjs.org/"
@@ -52,7 +31,17 @@
   },
   "license": "MIT",
   "private": false,
+  "dependencies": {
+    "vue": "^3.4.38"
+  },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "^4.0.3",
+    "vue-tsc": "^2.0.29"
+  },
+  "peerDependencies": {
     "vue": "^3.4.38"
   },
   "engines": {

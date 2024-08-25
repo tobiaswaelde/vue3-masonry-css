@@ -1,0 +1,49 @@
+name: Release and Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+
+jobs:
+  release:
+    name: Release and Publish to NPM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Bump version and release
+        id: bump_version
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          npm version --no-git-tag-version $CURRENT_VERSION
+          git commit -am "Release version $CURRENT_VERSION"
+          git tag "v$CURRENT_VERSION"
+          echo "VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
+
+      - name: Push changes and tags
+        run: |
+          git push origin main --tags
+
+      - name: Publish to NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
