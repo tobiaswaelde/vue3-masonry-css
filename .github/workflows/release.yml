@@ -28,11 +28,16 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Bump version and release
-        id: bump_version
+      - name: Commit changes (if any)
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "chore: commit changes before version bump"
+
+      - name: Bump version and release
+        id: bump_version
+        run: |
           npm version patch -m "Release version %s"
           echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
