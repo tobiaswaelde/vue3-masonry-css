@@ -14,5 +14,6 @@ if (typeof window !== 'undefined') {
 }
 
 export default Vue3Masonry;
+export { Masonry };
 export * from './types';
 export * from './core';

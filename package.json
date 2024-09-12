@@ -4,7 +4,7 @@
   "description": "Vue Masonry component powered by CSS, dependancy free",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/vue3-masonry.umd.js",
+  "module": "./dist/vue3-masonry.es.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
+    "nodemon": "^3.1.4",
     "typescript": "^5.5.4",
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.0.3",
