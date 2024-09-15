@@ -57,7 +57,7 @@ const getChildItems = (): VNode[] => {
   const rawChildItems = slots.default() as any;
   if (props.childItemWrapper) {
     if (
-      String(rawChildItems[0].children[0].type) === 'Symbol(v-fgt)' ||
+      String(rawChildItems[0].children[0]?.type) === 'Symbol(v-fgt)' ||
       typeof rawChildItems[0].children === 'symbol'
     ) {
       return rawChildItems[0].children[0]?.children;
