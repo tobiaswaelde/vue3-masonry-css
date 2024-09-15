@@ -1,10 +1,11 @@
 import { Plugin } from 'vue';
 import { MasonryPluginOptions } from './types/plugin-options';
-import Masonry from './core/masonry.vue';
+import MasonryGrid from './core/masonry-grid.vue';
+import MasonryGridItem from './core/masonry-grid-item.vue';
 
 const Vue3Masonry: Plugin = {
   install(app, options?: MasonryPluginOptions) {
-    app.component(options?.name ?? 'masonry', Masonry);
+    app.component(options?.name ?? 'masonry-grid', MasonryGrid);
   },
 };
 
@@ -14,6 +15,6 @@ if (typeof window !== 'undefined') {
 }
 
 export default Vue3Masonry;
-export { Masonry };
+export { MasonryGrid, MasonryGridItem };
 export * from './types';
 export * from './core';

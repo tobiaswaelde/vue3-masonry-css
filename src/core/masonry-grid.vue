@@ -6,6 +6,7 @@
 import { computed, h, nextTick, onBeforeUnmount, onMounted, ref, VNode } from 'vue';
 import { MasonryProps } from '../types/props';
 import { breakpointValue } from '../util/breakpoint-value';
+import { findChildNodesWithClassName } from '../util/find-child-nodes';
 
 const props = withDefaults(defineProps<MasonryProps>(), {
   columns: 2,
@@ -54,17 +55,8 @@ const recalculateGutterSize = (windowWidth: number) => {
 };
 
 const getChildItems = (): VNode[] => {
-  const rawChildItems = slots.default() as any;
-  if (props.childItemWrapper) {
-    if (
-      String(rawChildItems[0].children[0]?.type) === 'Symbol(v-fgt)' ||
-      typeof rawChildItems[0].children === 'symbol'
-    ) {
-      return rawChildItems[0].children[0]?.children;
-    }
-    return rawChildItems[0].children as VNode[];
-  }
-  return rawChildItems;
+  const rawChildItems = slots.default() as VNode[];
+  return findChildNodesWithClassName(rawChildItems, 'masonry-grid-item');
 };
 
 const getChildItemsInColumnsArray = () => {
@@ -100,8 +92,7 @@ const gutterSize = computed(() => {
 const renderChild = (element: VNode) => {
   const style = props.css
     ? {
-        border: '0 solid transparent',
-        borderBottomWidth: gutterSize.value,
+        padding: `calc(${gutterSize.value} / 2)`,
       }
     : undefined;
 
@@ -122,8 +113,6 @@ const renderColumn = (children: VNode[], key: string) => {
         boxSizing: 'border-box',
         backgroundClip: 'padding-box',
         width: `${100 / displayColumns.value}%`,
-        border: '0 solid transparent',
-        borderLeftWidth: gutterSize.value,
       }
     : undefined;
 
@@ -143,7 +132,7 @@ const renderContainer = (columns: VNode[]) => {
   const style = props.css
     ? {
         display: ['-webkit-box', '-ms-flexbox', 'flex'],
-        marginLeft: `-${gutterSize.value}`,
+        margin: `calc(-${gutterSize.value} / 2)`,
       }
     : undefined;
 
