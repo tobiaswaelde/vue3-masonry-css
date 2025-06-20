@@ -11,7 +11,6 @@ import { findChildNodesWithClassName } from '../util/find-child-nodes';
 const props = withDefaults(defineProps<MasonryProps>(), {
   columns: 2,
   gutter: 0,
-  childItemWrapper: false,
   css: true,
   tag: 'div',
   columnTag: 'div',
