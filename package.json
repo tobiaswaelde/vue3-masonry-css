@@ -1,21 +1,7 @@
 {
-  "name": "vue3-masonry-css",
   "version": "1.0.7",
+  "name": "vue3-masonry-css",
   "description": "Vue Masonry component powered by CSS, dependancy free",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/vue3-masonry.es.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "dev": "nodemon",
-    "build": "vite build",
-    "preversion": "npm run build",
-    "prepublishOnly": "npm run build",
-    "publish-package": "git push && git push --tags && npm publish --registry=https://registry.npmjs.org/"
-  },
   "keywords": [
     "vue",
     "vue.js",
@@ -24,10 +10,6 @@
     "component",
     "css"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/tobiaswaelde/vue3-masonry-css.git"
-  },
   "author": {
     "name": "Tobias Wälde",
     "email": "tobias.waelde@gmail.com",
@@ -35,17 +17,37 @@
   },
   "license": "MIT",
   "private": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/vue3-masonry.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tobiaswaelde/vue3-masonry-css.git"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "build": "vite build",
+    "preversion": "npm run build",
+    "prepublishOnly": "npm run build",
+    "deploy:patch": "npm version patch && git push && git push --tags",
+    "deploy:minor": "npm version minor && git push && git push --tags",
+    "deploy:major": "npm version major && git push && git push --tags"
+  },
   "dependencies": {
-    "vue": "^3.4.38"
+    "vue": "^3.5.17"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.2",
-    "nodemon": "^3.1.4",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "vite-plugin-dts": "^4.0.3",
-    "vue-tsc": "^2.0.29"
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vue-tsc": "^2.2.10"
   },
   "peerDependencies": {
     "vue": "^3.4.38"
